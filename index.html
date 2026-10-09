@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08070b" />
+  <title>YOUR NAME — The Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#08070b;--panel:#111016;--text:#f5f1eb;--muted:#9b97a3;--red:#ff334f;--line:rgba(255,255,255,.13);--mx:50%;--my:40%}
+    *{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}button{font:inherit}.cursor-glow{position:fixed;width:420px;height:420px;left:var(--mx);top:var(--my);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,51,79,.105),transparent 67%);pointer-events:none;z-index:0}
+    .topbar{position:fixed;z-index:30;top:0;left:0;width:100%;padding:22px 5vw;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(#08070be8,transparent);backdrop-filter:blur(5px)}
+    .brand{font-weight:800;letter-spacing:-.06em;font-size:1.15rem}.brand span{color:var(--red)}.nav{display:flex;align-items:center;gap:28px;font-size:.8rem;color:#c4c0c9}.nav a{transition:color .25s}.nav a:hover{color:white}.status{font:10px "DM Mono",monospace;color:#d5d0d8;display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:#67f5a6;box-shadow:0 0 12px #67f5a6}
+    .hero{min-height:100svh;position:relative;display:flex;align-items:center;padding:135px 8vw 90px;overflow:hidden;isolation:isolate}
+    .hero:before{content:"";position:absolute;z-index:-2;width:min(70vw,900px);aspect-ratio:1;right:-12%;top:8%;border-radius:50%;background:radial-gradient(circle,rgba(108,26,52,.34),rgba(37,19,44,.12) 38%,transparent 70%)}
+    .hero:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#08070b 0%,rgba(8,7,11,.88) 40%,rgba(8,7,11,.1) 100%)}
+    .hero-copy{max-width:800px;position:relative;z-index:2}.eyebrow{font:11px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.22em;color:#ff8190;display:flex;align-items:center;gap:12px;margin-bottom:26px}.eyebrow:before{content:"";height:1px;width:35px;background:var(--red)}
+    h1{font-size:clamp(4rem,10.5vw,10.2rem);line-height:.82;letter-spacing:-.095em;margin:0;font-weight:800;text-transform:uppercase}.headline-line{display:block;overflow:hidden;padding:0 .07em .1em 0}.headline-line span{display:inline-block}.headline-line.accent{color:var(--red);text-shadow:0 0 45px #ff334f24}
+    .hero-sub{font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.8;color:#c3bec9;max-width:530px;margin:32px 0 0}.hero-sub strong{color:#fff;font-weight:700}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 20px;border:1px solid var(--line);border-radius:5px;font-size:.82rem;font-weight:800;transition:transform .25s,border-color .25s,background .25s}.btn:hover{transform:translateY(-3px);border-color:#ffffff6b}.btn-primary{background:var(--red);border-color:var(--red);color:white;box-shadow:0 8px 35px #ff334f25}.btn-primary:hover{background:#ff5269}.arrow{font-size:1.1rem}
+    .hero-art{position:absolute;right:5%;top:17%;width:min(43vw,560px);height:min(65vh,650px);min-height:390px;z-index:1;perspective:1000px}
+    .portrait-card{position:absolute;inset:3% 2% 4% 10%;border:1px solid #ffffff25;border-radius:12px;overflow:hidden;transform:rotateY(-9deg) rotateZ(2deg);background:linear-gradient(145deg,#241923,#101018 55%,#451c2a);box-shadow:0 35px 100px #000a,0 0 100px #ff334f12}
+    .portrait-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 35%,#ff334f16 65%,transparent 90%),radial-gradient(ellipse at 60% 35%,#a43a5144,transparent 45%)}
+    .portrait-silhouette{position:absolute;bottom:-3%;left:21%;width:61%;height:76%;background:linear-gradient(140deg,#c3a0a0,#59444d 37%,#17151d 72%);clip-path:polygon(36% 0,62% 3%,76% 18%,81% 40%,100% 100%,0 100%,18% 45%,22% 20%);filter:drop-shadow(0 0 35px #ff334f26);opacity:.85}
+    .portrait-head{position:absolute;bottom:48%;left:38%;width:27%;height:29%;border-radius:46% 46% 42% 42%;background:linear-gradient(110deg,#d8b0a3,#a8797c 68%,#563d4b);box-shadow:inset -12px 0 18px #442e3a66}
+    .portrait-hair{position:absolute;bottom:65%;left:34%;width:35%;height:20%;border-radius:55% 48% 20% 20%;background:#17131a;transform:rotate(-8deg);box-shadow:inset 12px 4px 0 #3a2932}
+    .art-label{position:absolute;left:7%;top:8%;font:10px "DM Mono",monospace;letter-spacing:.16em;color:#e5dbe0}.art-index{position:absolute;right:8%;bottom:8%;font:10px "DM Mono",monospace;color:#ff8a99;writing-mode:vertical-rl;letter-spacing:.2em}
+    .floating-tag{position:absolute;z-index:3;padding:12px 15px;border:1px solid #ffffff22;background:#0e0d13d9;backdrop-filter:blur(12px);border-radius:6px;font:10px "DM Mono",monospace;color:#ddd6df;box-shadow:0 15px 40px #0006}.tag-one{top:19%;right:-2%}.tag-two{bottom:17%;left:0}.tag-three{bottom:6%;right:7%;color:#ff9baa}
+    .scroll-note{position:absolute;bottom:30px;left:8vw;font:10px "DM Mono",monospace;color:#77717e;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:14px}.scroll-line{width:54px;height:1px;background:var(--red)}
+    .section{position:relative;padding:110px 8vw;border-top:1px solid var(--line)}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:36px}.kicker{font:10px "DM Mono",monospace;color:var(--red);letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}.section h2{font-size:clamp(2.5rem,6vw,5.5rem);letter-spacing:-.08em;line-height:.92;margin:0;text-transform:uppercase}.section-note{font-size:.88rem;color:var(--muted);max-width:270px;line-height:1.7}
+    .shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.tile{min-height:250px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:8px;padding:24px;background:linear-gradient(145deg,#17151e,#0e0d12);transition:transform .3s,border-color .3s;transform-style:preserve-3d}.tile:hover{border-color:#ff334f7a;transform:translateY(-7px)}.tile-number{font:10px "DM Mono",monospace;color:#ff7588}.tile h3{font-size:1.45rem;letter-spacing:-.05em;margin:70px 0 10px}.tile p{font-size:.8rem;line-height:1.65;color:var(--muted);max-width:280px}.tile-icon{position:absolute;right:20px;top:18px;font-size:2.4rem;color:#ffffff12;font-weight:800}.tile:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-90px;bottom:-100px;background:#ff334f18;filter:blur(2px)}
+    .bottom-cta{display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap;background:linear-gradient(110deg,#211019,#111016 60%);border:1px solid #ffffff17;border-radius:10px;padding:35px}.bottom-cta h3{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.07em;margin:0 0 8px}.bottom-cta p{color:var(--muted);margin:0;font-size:.9rem}.footer{padding:25px 8vw 35px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#77717e;font:10px "DM Mono",monospace;letter-spacing:.08em}
+    .reveal{opacity:0;transform:translateY(28px)}.no-js .reveal{opacity:1;transform:none}
+    @media(max-width:900px){.hero{padding-left:6vw;padding-right:6vw;align-items:flex-start;padding-top:24vh;min-height:920px}.hero-art{top:auto;bottom:7%;right:5%;width:67vw;height:440px;min-height:0;opacity:.75}.hero:after{background:linear-gradient(180deg,#08070b 0%,rgba(8,7,11,.94) 42%,rgba(8,7,11,.25) 100%)}.hero-copy{max-width:720px}.scroll-note{left:6vw}.section{padding:85px 6vw}.shelf{grid-template-columns:1fr 1fr}.tile:last-child{grid-column:span 2}}
+    @media(max-width:560px){.topbar{padding:18px 5vw}.nav{gap:14px}.nav a:nth-child(2){display:none}.status{font-size:8px}.hero{min-height:900px;padding-top:23vh}.hero-art{width:90vw;right:-5%;bottom:8%;height:390px;opacity:.63}.hero-sub{max-width:360px;font-size:.95rem}.actions .btn{padding:13px 15px}.scroll-note{bottom:22px}.section{padding:75px 5vw}.section-head{display:block}.section-note{margin-top:20px}.shelf{grid-template-columns:1fr}.tile:last-child{grid-column:auto}.tile{min-height:220px}.tile h3{margin-top:50px}.bottom-cta{padding:25px}.footer{padding:25px 5vw}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body class="no-js">
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top">YOUR<span>.</span>NAME</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#work">Explore</a><a href="#about">About</a><a href="#contact">Contact ↗</a>
+    </nav>
+    <div class="status"><span class="dot"></span> AVAILABLE FOR WORK</div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow reveal">Portfolio / 2026</div>
+        <h1 aria-label="Your name, digital creator">
+          <span class="headline-line"><span class="title-word">YOUR</span></span>
+          <span class="headline-line accent"><span class="title-word">NAME.</span></span>
+          <span class="headline-line"><span class="title-word" style="font-size:.43em;letter-spacing:-.06em">DIGITAL CREATOR</span></span>
+        </h1>
+        <p class="hero-sub reveal">I turn <strong>ideas into digital experiences</strong> — blending thoughtful design, clean code, and a little bit of cinematic magic.</p>
+        <div class="actions reveal">
+          <a class="btn btn-primary magnetic" href="#work">Explore my world <span class="arrow">↘</span></a>
+          <a class="btn magnetic" href="#contact">Let's talk <span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Abstract portrait artwork">
+        <div class="portrait-card">
+          <div class="art-label">INDEPENDENT CREATIVE / 001</div>
+          <div class="portrait-hair"></div><div class="portrait-head"></div><div class="portrait-silhouette"></div>
+          <div class="art-index">DESIGN · CODE · CREATE</div>
+        </div>
+        <div class="floating-tag tag-one">✳ FRONT-END DEVELOPER</div>
+        <div class="floating-tag tag-two">✦ UI / UX THINKER</div>
+        <div class="floating-tag tag-three">SCROLL TO EXPLORE ↓</div>
+      </div>
+      <div class="scroll-note"><span class="scroll-line"></span> A portfolio, not a resume</div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-head reveal">
+        <div><div class="kicker">The next episode</div><h2>Explore<br>my world.</h2></div>
+        <p class="section-note">A few things that make me, me. This is a first-look landing page — we can connect these cards to real content next.</p>
+      </div>
+      <div class="shelf">
+        <a href="#contact" class="tile reveal"><span class="tile-number">EPISODE 01 / 01</span><span class="tile-icon">↗</span><h3>The story</h3><p>Who I am, what I care about, and the path that brought me here.</p></a>
+        <a href="#contact" class="tile reveal"><span class="tile-number">EPISODE 02 / 02</span><span class="tile-icon">✳</span><h3>Selected work</h3><p>Projects built to solve problems, spark curiosity, and feel great to use.</p></a>
+        <a href="#contact" class="tile reveal"><span class="tile-number">EPISODE 03 / 03</span><span class="tile-icon">⌘</span><h3>My toolkit</h3><p>Design systems, front-end craft, motion, and the tools behind the scenes.</p></a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="bottom-cta reveal">
+        <div><div class="kicker">Your next favorite collaborator</div><h3>Have a good idea?<br>Let's make it real.</h3><p>Available for exciting projects, collaborations, and creative experiments.</p></div>
+        <a class="btn btn-primary magnetic" href="mailto:hello@example.com" id="contact">Start a conversation <span class="arrow">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><span>© 2026 YOUR NAME — MADE WITH INTENTION</span><span>DESIGN · MOTION · DEVELOPMENT</span></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script>
+    document.body.classList.remove('no-js');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const glow = document.querySelector('.cursor-glow');
+    window.addEventListener('pointermove', e => {
+      document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--my', e.clientY + 'px');
+    }, {passive:true});
+
+    if (window.gsap && !reduceMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+      if (window.Lenis) {
+        const lenis = new Lenis({duration:1.15, smoothWheel:true, touchMultiplier:1.2});
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(time => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
+      const intro = gsap.timeline({defaults:{ease:'power4.out'}});
+      intro.from('.topbar', {y:-25, opacity:0, duration:.8})
+        .from('.eyebrow', {y:20, opacity:0, duration:.6}, '-=.35')
+        .from('.title-word', {yPercent:115, rotate:3, stagger:.12, duration:1.1}, '-=.25')
+        .from('.hero-sub', {y:24, opacity:0, duration:.7}, '-=.55')
+        .from('.actions .btn', {y:18, opacity:0, stagger:.12, duration:.55}, '-=.45')
+        .from('.portrait-card', {opacity:0, scale:.92, rotateY:-22, duration:1.2}, '-=1')
+        .from('.floating-tag', {opacity:0, y:12, stagger:.12, duration:.5}, '-=.6')
+        .from('.scroll-note', {opacity:0, x:-15, duration:.5}, '-=.3');
+
+      gsap.to('.portrait-card', {y:-18, rotateZ:-1, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:1}});
+      gsap.to('.hero-copy', {y:-55, opacity:.3, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:1}});
+      gsap.utils.toArray('.reveal').forEach((el) => {
+        if (el.closest('.hero')) return;
+        gsap.fromTo(el, {y:35, opacity:0}, {y:0, opacity:1, duration:.8, ease:'power3.out', scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none reverse'}});
+      });
+      gsap.utils.toArray('.tile').forEach((tile, i) => {
+        tile.addEventListener('pointermove', e => {
+          const r = tile.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+          gsap.to(tile, {rotateY:x*5, rotateX:-y*5, duration:.3, ease:'power2.out', transformPerspective:800});
+        });
+        tile.addEventListener('pointerleave', () => gsap.to(tile, {rotateX:0, rotateY:0, duration:.5, ease:'power3.out'}));
+      });
+      document.querySelectorAll('.magnetic').forEach(el => {
+        el.addEventListener('pointermove', e => {
+          const r=el.getBoundingClientRect(), x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+          gsap.to(el,{x:x*.12,y:y*.18,duration:.3,ease:'power2.out'});
+        });
+        el.addEventListener('pointerleave',()=>gsap.to(el,{x:0,y:0,duration:.5,ease:'elastic.out(1,.5)'}));
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none'});
+    }
+  </script>
+</body>
+</html>
